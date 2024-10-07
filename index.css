@@ -29,13 +29,15 @@
         text-wrap: nowrap;
     }
     .trending-box span {
-        font-size: small;
+        /* font-size: small; */
     }
     .trending-box .price {
         font-size: medium;
     }
 .trending-container .img-content {
     width: 60%;
+    display: grid;
+    align-items: center;
     margin: auto !important;
 }
 .trending-box-img-container {
