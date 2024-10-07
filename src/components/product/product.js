@@ -182,24 +182,33 @@ function Product()
   const searchParams = new URLSearchParams(window.location.search);
   const id = searchParams.get('id');
 
+  var productList = JSON.parse(localStorage.getItem('data'));
+  var data; 
+    productList.forEach(element => {
+    if(parseInt(element.id) === parseInt(id)) {
+      data = element;
+      console.log(element)
+    }
+    });
+  console.log(id)
   useEffect(() => {
-    fixedData.productOrginalPrice = parseInt(localStorage.getItem('productOrginalPrice'));
-  fixedData.productDiscount = parseInt(localStorage.getItem('productDiscount'));
-  fixedData.productFinalPrice = (parseInt(localStorage.getItem('productFinalPrice')));
-  }, [fixedData])
+    fixedData.productOrginalPrice = data.productOrginalPrice;
+  fixedData.productDiscount = data.productDiscount;
+  fixedData.productFinalPrice = (data.productFinalPrice);
+  }, [fixedData, data])
   useEffect(() => {
-  setProductName(localStorage.getItem('productName'));
-  setProductDiscription(localStorage.getItem('productDiscription'));
-  setProductImgSrc(localStorage.getItem('productImgSrc'));
-  setProductOrginalPrice(parseInt(localStorage.getItem('productOrginalPrice')));
-  setProductDiscountType(localStorage.getItem('productDiscountType'));
-  setProductDiscount(parseInt(localStorage.getItem('productDiscount')));
+  setProductName(data.productName);
+  setProductDiscription(data.productDiscription);
+  setProductImgSrc(data.productImgSrc);
+  setProductOrginalPrice(data.productOrginalPrice);
+  setProductDiscountType(data.productDiscountType);
+  setProductDiscount(data.productDiscount);
   
-  setProductFinalPrice(parseInt(localStorage.getItem('productFinalPrice')));
-  setProductQuantityLimit(parseInt(localStorage.getItem('productQuantityLimit')));
+  setProductFinalPrice(data.productFinalPrice);
+  setProductQuantityLimit(data.productQuantityLimit);
   setProductType(localStorage.getItem('productType'));
   cl();
-  }, [])
+  }, [data])
   const nav = useNavigate();
 
   const cl = () =>
@@ -254,15 +263,14 @@ function Product()
 
     const addToCart = () => {
       localStorage.setItem('Quantity', maxMinQua);
-      nav(`/addToCart`, { replace: true })
+      nav(`/AddToCart?id=${id}`, { replace: true })
     }
 
     return(
         <div class="container">
         <Breadcrumb>
                 <Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
-                <Breadcrumb.Item><Link to="/products">Products</Link></Breadcrumb.Item>
-                <Breadcrumb.Item><Link to={`/pre-view-product?id=${id}`}>PreViewProduct</Link></Breadcrumb.Item>
+                <Breadcrumb.Item><Link to="">Product</Link></Breadcrumb.Item>
         </Breadcrumb>
             <div class="row">
                 <div class="col-md-5 col-sm-12 bg-dark text-white img_cont" style={{height: '500px'}}>

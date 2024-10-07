@@ -1,5 +1,7 @@
+import { Breadcrumb } from 'react-bootstrap';
 import '../style/product/addToCart.css';
 import { useEffect } from "react";
+import { Link } from 'react-router-dom';
 
 
 function AddToCart()
@@ -22,18 +24,24 @@ function AddToCart()
   const id = searchParams.get('id');
 
   // useEffect(() => {
-    var data = JSON.parse(localStorage.getItem('data'));
+    var productList = JSON.parse(localStorage.getItem('data'));
+    var data = {};
+    productList.forEach(element => {
+      if(parseInt(element.id) === parseInt(id)) {
+        data = element;
+      }
+      });
     console.log(data);
-    fixedData.productName = data[0].productName;
-    fixedData.productDiscription = data[0].productDiscription;
-    fixedData.productImgSrc = data[0].productImgSrc;
-    fixedData.productOrginalPrice = parseInt(data[0].productOrginalPrice);
-    fixedData.productDiscountType = data[0].productDiscountType;
-    fixedData.productDiscount = parseInt(data[0].productDiscount);
+    fixedData.productName = data.productName;
+    fixedData.productDiscription = data.productDiscription;
+    fixedData.productImgSrc = data.productImgSrc;
+    fixedData.productOrginalPrice = parseInt(data.productOrginalPrice);
+    fixedData.productDiscountType = data.productDiscountType;
+    fixedData.productDiscount = parseInt(data.productDiscount);
       
-    fixedData.productFinalPrice = parseInt(data[0].productFinalPrice);
-    fixedData.productQuantityLimit = parseInt(data[0].productQuantityLimit);
-    fixedData.productType = data[0].productType;
+    fixedData.productFinalPrice = parseInt(data.productFinalPrice);
+    fixedData.productQuantityLimit = parseInt(data.productQuantityLimit);
+    fixedData.productType = data.productType;
     fixedData.quantity = localStorage.getItem('Quantity');
   // cl();
   // }, [fixedData])
@@ -102,6 +110,11 @@ function AddToCart()
     }
     return(
         <div class="p-5">
+        <Breadcrumb>
+                <Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
+                <Breadcrumb.Item><Link to={`/Shopping?id=${id}`}>Add Products</Link></Breadcrumb.Item>
+                <Breadcrumb.Item><Link to="">AddToCart</Link></Breadcrumb.Item>
+        </Breadcrumb>
             <div class="row m-auto">
                 <img src={fixedData.productImgSrc} alt="" class="col-md-3 col-sm-5" id="img"/>
                 <div class="col-md-5 col-sm-7 p-lg-3 p-1" style={{backgroundColor: "rgba(0, 128, 0, 0.445)"}}>

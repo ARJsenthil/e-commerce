@@ -476,31 +476,30 @@ const [data, setData] = useState();
     localStorage.setItem('productOrginalPrice', productOrginalPrice);
     localStorage.setItem('productDiscount', productDiscount);
     localStorage.setItem('productImgSrc', productImgSrc);
-
-const temp_data = [
-  {
-    productName: productName,
-    productDiscription: productDiscription,
-    productQuantityLimit: productQuantityLimit,
-    productFinalPrice: productFinalPrice,
-    productDiscountType: productDiscountType,
-    productOrginalPrice: productOrginalPrice,
-    productDiscount: productDiscount,
-    productImgSrc: productImgSrc,
-  },]
-  localStorage.setItem('data', JSON.stringify(temp_data));
-  nav("/shopping", {replace: true})
+    
+  var data = localStorage.getItem('data');
+  var productData = data ? JSON.parse(data): [];
+  
+  const temp_data = {
+      id : data.length,
+      productName: productName,
+      productDiscription: productDiscription,
+      productQuantityLimit: productQuantityLimit,
+      productFinalPrice: productFinalPrice,
+      productDiscountType: productDiscountType,
+      productOrginalPrice: productOrginalPrice,
+      productDiscount: productDiscount,
+      productImgSrc: productImgSrc,
+    }
+  productData.push(temp_data[0])
+  localStorage.setItem('data', JSON.stringify(productData));
+  nav("/", {replace: true})                                                                                                                                                                                     
 }
   
   return (
     <div className="container">
 
     <pre>{data != undefined ? data.product1.productDescription : ''}</pre>
-    <Breadcrumb>
-            <Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
-            <Breadcrumb.Item><Link to="/products">Products</Link></Breadcrumb.Item>
-            <Breadcrumb.Item><Link to="/addproduct">Add Products</Link></Breadcrumb.Item>
-    </Breadcrumb>
     <Form className="d-grid" onSubmit={addProduct} style={{gridTemplateColumns : 'auto auto'}}>
       <Form.Group className="mb-3 px-1" controlId="">
         <Form.Label>Product Name <span className="text-danger">*</span></Form.Label>
