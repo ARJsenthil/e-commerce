@@ -18,7 +18,7 @@
 
 .trending-box {
     font-weight: bold;
-    height: 500px;
+    height: 300px;
 }
     .trending-box span , .trending-box .price, .trending-box h6{
         display: inline-block;
