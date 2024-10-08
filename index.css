@@ -6,6 +6,7 @@
     gap: 10px;
     font-size: x-large !important; 
     align-items: baseline;
+    margin: auto;
 }
 .product_price_parent .product_price
 {
@@ -18,7 +19,25 @@
 
 .trending-box {
     font-weight: bold;
-    height: 300px;
+    position: relative;
+}
+.trending-box-inner-container {
+    height: 450px;
+}
+.add-product-link {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.add-product-link i {
+    font-size: xx-large;
+}
+.add-product-link span {
+    width: fit-content !important;
 }
     .trending-box span , .trending-box .price, .trending-box h6{
         display: inline-block;
@@ -35,19 +54,21 @@
         font-size: medium;
     }
 .trending-container .img-content {
-    width: 60%;
     display: grid;
     align-items: center;
+    gap: 5px;
     margin: auto !important;
+    height: 40%;
 }
 .trending-box-img-container {
     position: relative;
     overflow: hidden;
     padding-top: 15px;
-
+    height: 60%;
 }
 .trending-box-img-container img {
 width: 80%;
+height: 100%;
 margin: auto;
 display: inherit;
 }
