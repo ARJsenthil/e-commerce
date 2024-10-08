@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 function MenuBar()
 {
+  
     return(
 <nav class="navbar navbar-expand-lg navbar-dark bg-info">
         <Link class="navbar-brand" to={"/"}>Shopping</Link>

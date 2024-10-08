@@ -493,7 +493,8 @@ const [data, setData] = useState();
     }
   productData.push(temp_data)
   localStorage.setItem('data', JSON.stringify(productData));
-  nav("/", {replace: true})                                                                                                                                                                                     
+  nav("/", {replace: true})
+  swal('Success', 'Product Added Successfully', 'success');
 }
   
   return (

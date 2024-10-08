@@ -1,12 +1,42 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function Home () {
     const storedData = localStorage.getItem('data');
     const data = storedData ? JSON.parse(storedData) : "";
+    const deleteProductData = () => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                try {
+                    localStorage.setItem('data', '[]')
+                }
+                catch(e) {
+
+                }
+                finally {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                      });                    
+                }
+
+            }
+          });
+    }
 
     return (
         <div className="container">
+            <button onClick={deleteProductData} className="btn btn-danger">Clear Data</button>
         <div className="row trending-container">
             {data ? (data.map((data1) => 
                     <div className="col-12 col-md-6 col-lg-4 trending-box">

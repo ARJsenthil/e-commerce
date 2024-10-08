@@ -43,71 +43,7 @@ function AddToCart()
     fixedData.productQuantityLimit = parseInt(data.productQuantityLimit);
     fixedData.productType = data.productType;
     fixedData.quantity = localStorage.getItem('Quantity');
-  // cl();
-  // }, [fixedData])
-  const cl = () => {
-    // var discount = fixedData.productDiscount;
-    // var discountType = fixedData.productDiscountType;
-    // var quantity = fixedData.quantity;
-    // var finalPrice = fixedData.productFinalPrice;
-    // var orginalPrice = fixedData.productOrginalPrice;
-    // if(discountType == '%')
-    // {
-    //   fixedData.productDiscount = discount;
-    //   fixedData.productDiscountType = disType;
-    //   fixedData.productOrginalPrice = quantity * orginalPrice;
-    //   fixedData.productOrginalPrice = quantity * orginalPrice;
-    // }
-    // else if(discountType == 'flat')
-    // {
-    //   fixedData.productDiscount = discount * quantity;
-    //   fixedData.productDiscountType = 'off';
-    //   fixedData.productOrginalPrice = quantity * orginalPrice;
-    //   fixedData.productOrginalPrice = quantity * orginalPrice;
-    // }
-
-    // var c = orginalPrice - price;
-    // var pro_dis = document.getElementById('pro_dis');
     
-    // if(finalPrice > 499)
-    // {
-    // del_cost.innerHTML = quantity * 40;
-    
-    // if(disType != '')
-    // {
-    //   product_price1.innerHTML = quantity * price;
-    //   orginalPr = quantity * orginalPrice;
-    //   discount = '-₹' + quantity * c;
-    // }
-    // else
-    // {
-    //   product_price1.innerHTML = quantity * price;
-    //   fixedData.productOrginalPrice = quantity * price;
-    //   pro_dis.innerHTML = 'No Discount';
-    //   pro_dis.style = 'color: inherit;'
-    // }
-    // }
-    // else
-    // {
-    // del_cost.innerHTML = quantity * 40;
-    // free.style = 'display: none;';
-
-    // if(disType != '')
-    // {
-    //   product_price1.innerHTML = (( quantity * price ) + ( quantity * 40 ));
-    //   fixedData.productOrginalPrice = quantity * orginalPrice;
-    //   pro_dis.innerHTML = '-₹' + quantity * c;
-    // }
-    // else
-    // {
-    //   product_price1.innerHTML = (( quantity * price ) + ( quantity * 40 ));
-    //   fixedData.productOrginalPrice = quantity * price;
-    //   pro_dis.innerHTML = 'No Discount';
-    //   pro_dis.style = 'color: inherit;'
-    // }
-    // }
-    
-    }
     return(
         <div class="p-5">
         <Breadcrumb>
