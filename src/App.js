@@ -10,7 +10,6 @@ function App() {
     <div className="App">
       <BrowserRouter> 
       <MenuBar/>
-      <Link to="/addProduct">hi</Link>
       <Routes>
         <Route index path="/" element={<Home />}/>
         <Route path="/AddProduct" element={<AddProduct />}/>
