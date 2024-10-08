@@ -491,7 +491,7 @@ const [data, setData] = useState();
       productDiscount: productDiscount,
       productImgSrc: productImgSrc,
     }
-  productData.push(temp_data[0])
+  productData.push(temp_data)
   localStorage.setItem('data', JSON.stringify(productData));
   nav("/", {replace: true})                                                                                                                                                                                     
 }
@@ -500,7 +500,7 @@ const [data, setData] = useState();
     <div className="container">
 
     <pre>{data != undefined ? data.product1.productDescription : ''}</pre>
-    <Form className="d-grid" onSubmit={addProduct} style={{gridTemplateColumns : 'auto auto'}}>
+    <Form className="d-grid" onSubmit={addProduct} style={{gridTemplateColumns : 'auto auto'}} method="post">
       <Form.Group className="mb-3 px-1" controlId="">
         <Form.Label>Product Name <span className="text-danger">*</span></Form.Label>
         <Form.Control  type="text" required placeholder="Product Name" id="product_Name" onInput={inp} value={productName}/>

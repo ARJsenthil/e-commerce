@@ -182,21 +182,30 @@ function Product()
   const searchParams = new URLSearchParams(window.location.search);
   const id = searchParams.get('id');
 
-  var productList = JSON.parse(localStorage.getItem('data'));
-  var data; 
-    productList.forEach(element => {
-    if(parseInt(element.id) === parseInt(id)) {
-      data = element;
-      console.log(element)
-    }
-    });
+  
   console.log(id)
   useEffect(() => {
-    fixedData.productOrginalPrice = data.productOrginalPrice;
+    var productList = JSON.parse(localStorage.getItem('data'));
+    var data; 
+      productList.forEach(element => {
+      if(parseInt(element.id) === parseInt(id)) {
+        data = element;
+        console.log(element)
+      }
+      });
+  fixedData.productOrginalPrice = data.productOrginalPrice;
   fixedData.productDiscount = data.productDiscount;
   fixedData.productFinalPrice = (data.productFinalPrice);
-  }, [fixedData, data])
+  }, [fixedData])
   useEffect(() => {
+    var productList = JSON.parse(localStorage.getItem('data'));
+    var data; 
+      productList.forEach(element => {
+      if(parseInt(element.id) === parseInt(id)) {
+        data = element;
+        console.log(element)
+      }
+      });
   setProductName(data.productName);
   setProductDiscription(data.productDiscription);
   setProductImgSrc(data.productImgSrc);
@@ -208,7 +217,7 @@ function Product()
   setProductQuantityLimit(data.productQuantityLimit);
   setProductType(localStorage.getItem('productType'));
   cl();
-  }, [data])
+  }, [])
   const nav = useNavigate();
 
   const cl = () =>
