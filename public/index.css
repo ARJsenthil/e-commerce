@@ -115,31 +115,8 @@ display: inherit;
     animation: none !important;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.product-content-box {
+    text-align: center;
+    min-height: 250px;
+}
 }

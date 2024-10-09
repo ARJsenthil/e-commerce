@@ -1,43 +1,63 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import swal from "sweetalert";
 
 export default function Home () {
-    const storedData = localStorage.getItem('data');
-    const data = storedData ? JSON.parse(storedData) : "";
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        dataRetrive();
+    }, [])
+
+    console.log(data);
+    
+    const dataRetrive = () => {
+    var storedData = localStorage.getItem('data');
+    setData(storedData ? JSON.parse(storedData) : "");
+
+    }
     const deleteProductData = () => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-          }).then((result) => {
-            if (result.isConfirmed) {
-                try {
-                    localStorage.setItem('data', '[]')
+        if(data.length > 0) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    try {
+                        localStorage.setItem('data', '[]')
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                          });   
+                          dataRetrive();
+                    }
+                    catch(e) {
+                        Swal.fire({
+                            title: "Sorry!",
+                            text: "try again later.",
+                            icon: "swarningccess"
+                          }); 
+                    }
                 }
-                catch(e) {
-
-                }
-                finally {
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "Your file has been deleted.",
-                        icon: "success"
-                      });                    
-                }
-
-            }
-          });
+              });
+        }
+        else {
+            swal('Sorry !', 'Nothing To Delete', 'warning');
+        }
     }
 
     return (
         <div className="container">
-            <button onClick={deleteProductData} className="btn btn-danger">Clear Data</button>
         <div className="row trending-container">
+            <div className="col-12">
+            <button onClick={deleteProductData} className="float-right my-2 btn btn-danger">Clear Data</button>
+            </div>
             {data ? (data.map((data1) => 
                     <div className="col-12 col-md-6 col-lg-4 trending-box">
                         <div className="my-1 border trending-box-inner-container">

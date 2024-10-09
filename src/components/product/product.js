@@ -277,7 +277,7 @@ function Product()
 
     return(
         <div class="container">
-        <Breadcrumb>
+        <Breadcrumb className='mt-2'>
                 <Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
                 <Breadcrumb.Item><Link to="">Product</Link></Breadcrumb.Item>
         </Breadcrumb>

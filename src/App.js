@@ -12,6 +12,7 @@ function App() {
       <MenuBar/>
       <Routes>
         <Route index path="/" element={<Home />}/>
+        <Route path="/Home" element={<Home />}/>
         <Route path="/AddProduct" element={<AddProduct />}/>
         <Route path="/Shopping" element={<Product />}/>
         <Route path="/AddToCart" element={<AddToCart />}/>
