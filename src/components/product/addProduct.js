@@ -27,28 +27,20 @@ const [data, setData] = useState();
 
   const productOrgPrice = (data) =>
     {
-      if(productDiscount != 0)
-      {
+    if(parseInt(productDiscount) > 0)
+    {
       if(productDiscountType == '%')
       {
         setProductDiscountManditary(true)
-          if(productDiscount)
-          {
-              var d = parseInt(productOrginalPrice) - (parseInt(productOrginalPrice) * (parseInt(productDiscount.value)/100));
-              console.log('%', d);
-              setProductFinalPrice(Math.round(d));
-          }
+              var d = (parseInt(data) * (parseInt(productDiscount)/100));
+        setProductFinalPrice(Math.round(d))
       }
       else if(productDiscountType == 'flat')
       {
         setProductDiscountManditary(true)
-  
-          if(productDiscount)
-          {
-              var d = parseInt(productOrginalPrice) - parseInt(productDiscount);
+              var d = parseInt(data) - parseInt(productDiscount);
               console.log('Flat', d);
               setProductFinalPrice(Math.round(d));
-          }
       }
     }
     else
@@ -177,6 +169,11 @@ const [data, setData] = useState();
     {
         setProductDiscountType(value);
         disTypeSelect(value);
+        if(value == '-1') {
+          setProductDiscountManditary(false)
+        } else {
+          setProductDiscountManditary(true)
+        }
     }
     else if(id == 'product_Discount')
     {
@@ -217,9 +214,8 @@ const [data, setData] = useState();
     event.preventDefault()
     var data = localStorage.getItem('data');
     var productData = data ? JSON.parse(data): [];
-
   const temp_data = {
-      id : data.length,
+      id : productData.length,
       productName: productName,
       productDiscription: productDiscription,
       productQuantityLimit: productQuantityLimit,
@@ -230,10 +226,10 @@ const [data, setData] = useState();
       productImgSrc: productImgSrc,
     }
     productData.push(temp_data)
-    try {
+try {
       localStorage.setItem('data', JSON.stringify(productData));
       swal('Success', 'Product Added Successfully', 'success');
-      nav("/", {replace: false})
+      nav("/", {replace: true})
     }
     catch(e) {
       swal('Sorry !', 'try again later', 'warning');    

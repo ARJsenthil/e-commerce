@@ -1,6 +1,6 @@
 
 
-.product_price_parent
+.product_price_parent_home
 {
     display: flex;
     gap: 10px;
@@ -8,11 +8,11 @@
     align-items: baseline;
     margin: auto;
 }
-.product_price_parent .product_price
+.product_price_parent_home .product_price
 {
         font-size: xx-large !important;
 }
-.product_price_parent .product_org_price
+.product_price_parent_home .product_org_price
 {
     color: rgba(0, 0, 0, 0.473);
 }
@@ -115,8 +115,4 @@ display: inherit;
     animation: none !important;
 }
 
-.product-content-box {
-    text-align: center;
-    min-height: 250px;
-}
 }

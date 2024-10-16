@@ -41,7 +41,9 @@ img {
 {
     color: rgba(0, 0, 0, 0.473);
 }
-
+.price-content-inner-box {
+    height: 100%;
+}
 
 .price-detais {
     /* font-size: small; */
@@ -61,4 +63,34 @@ img {
         margin: 0px;
         height: 20% !important;
     }
+}
+
+@media screen and (max-width: 575px) {
+    
+.price-content-box {
+    text-align: center;
+}
+.price-content-box p {
+    text-align: justify;
+    padding-inline: 5%;
+}
+h3.product_price_parent {
+    justify-content: center;
+}
+.price-content-inner-box {
+    padding: 10px !important;
+}
+.price-box h6{
+    text-align: center !important;
+}
+.price-box p.row span.col-7 {
+    padding-left: 30px !important;
+}
+.product_price_parent {
+    font-size: large !important;
+}
+.product_price_parent .product_price
+{
+        font-size: x-large !important;
+}
 }

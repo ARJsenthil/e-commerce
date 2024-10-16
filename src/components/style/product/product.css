@@ -105,3 +105,13 @@
         border-color: gold;
     }
 }
+
+
+
+@media screen and (max-width: 991px) {
+
+    .trending-box span ,.trending-box .price,.trending-box h6{
+            text-align: auto !important;
+        }
+    
+    }

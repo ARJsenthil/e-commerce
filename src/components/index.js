@@ -71,7 +71,7 @@ export default function Home () {
                         <div className="img-content px-2 py-3">
                         {/* <span className="text-sm-center text-md-left text-secondary">{data1.productType.toUpperCase()}</span> */}
                         <h6 className="text-center m-0">{data1.productName.toUpperCase()}</h6>
-                        <h3 className="product_price_parent"><span className="product_price" id="product_price">₹{data1.productFinalPrice}</span><del className="product_org_price" id="product_org_price">{data1.productDiscountType == -1 ? '' : ('₹'+data1.productOrginalPrice)}</del><span style={{color: 'green'}}><span className="product_discount" id="product_discount">{data1.productDiscountType == "%" ? (data1.productDiscount + "%"): (data1.productDiscountType == "flat" ? ("₹" + data1.productDiscount) : "")}</span></span> </h3>
+                        <h3 className="product_price_parent_home"><span className="product_price" id="product_price">₹{data1.productFinalPrice}</span><del className="product_org_price" id="product_org_price">{data1.productDiscountType == -1 ? '' : ('₹'+data1.productOrginalPrice)}</del><span style={{color: 'green'}}><span className="product_discount" id="product_discount">{data1.productDiscountType == "%" ? (data1.productDiscount + "%"): (data1.productDiscountType == "flat" ? ("₹" + data1.productDiscount) : "")}</span></span> </h3>
                         <Link className="btn btn-primary" to={`/Shopping?id=${parseInt(data1.id)}`}>View Product</Link>
                         </div>
                         </div>

@@ -53,15 +53,17 @@ function AddToCart()
         </Breadcrumb>
             <div class="row m-auto">
                 <img src={fixedData.productImgSrc} alt="" className="col-12 col-sm-12 col-md-3 product-img" id="img"/>
-                <div className="col-12 col-sm-12 col-md-5 p-lg-3 p-1 price-content-box" style={{backgroundColor: "rgba(0, 128, 0, 0.445)"}}>
+                <div className="col-12 col-sm-12 col-md-5 price-content-box" >
+                  <div className="p-3 price-content-inner-box" style={{backgroundColor: "rgba(0, 128, 0, 0.445)"}}>
 
                     <h1 id="product_name">{fixedData.productName}</h1>
                     <p id="product_des">{fixedData.productDiscription}</p>
                     <h3 class="d-flex" className="product_price_parent"><span className="product_price" id="product_price">₹{fixedData.productFinalPrice * fixedData.quantity}</span><del className="product_org_price" id="product_org_price">{fixedData.productDiscountType == -1 ? '' : ('₹'+fixedData.productOrginalPrice  * fixedData.quantity)}</del><span style={{color: 'green'}}><span className="product_discount" id="product_discount">{fixedData.productDiscountType == "%" ? (fixedData.productDiscount + "%"): (fixedData.productDiscountType == "flat" ? ("₹" + fixedData.productDiscount * fixedData.quantity) : "")}</span></span> </h3>
                     {/* <h3 class="d-flex" id="product_price_parent"><span id="product_price"></span><del id="product_org_price"></del><span style={{color: "green"}}><span id="product_discount"></span><span id="product_dis_type"></span></span> </h3> */}
+                  </div>
                 </div>
                 <div className="col-sm-12 col-md-4 d-grid price-box" style={{gap: "10px"}}>
-                    <h6 class="pt-3 pb-3">PRICE DETAILS</h6>
+                  <h6 class="pt-3 pb-3">PRICE DETAILS</h6>
                     <p class="row"><span class="col-7">Price Item({fixedData.quantity})</span><span class="col-5" id="product_org_price1">₹{parseInt(fixedData.productOrginalPrice) * fixedData.quantity}</span></p>
                     <p class="row"><span class="col-7">Discount</span><span class="col-5 text-success" id="pro_dis">{fixedData.productDiscountType == '-1' ? "No Discount" : ('- ₹'+((parseInt(fixedData.productOrginalPrice) * fixedData.quantity) - (parseInt(fixedData.productFinalPrice) * fixedData.quantity)))}</span></p>
                     <p class="row"><span class="col-7" >Deleviry Cost</span><span  class="col-5 text-success" id="">{(parseInt(fixedData.productFinalPrice) * parseInt(fixedData.quantity)) > 500 ? <span className='text-success'><del className='text-secondary'>₹ 40</del> Free</span> : '₹ 40'} </span></p>
