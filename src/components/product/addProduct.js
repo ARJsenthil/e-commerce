@@ -238,7 +238,7 @@ try {
   
   return (
     <div className="container">
-    <Form className="d-grid" onSubmit={addProduct} style={{gridTemplateColumns : 'auto auto'}} method="post">
+    <Form className="d-grid mt-2" onSubmit={addProduct} style={{gridTemplateColumns : 'auto auto'}} method="post">
       <Form.Group className="mb-3 px-1" controlId="">
         <Form.Label>Product Name <span className="text-danger">*</span></Form.Label>
         <Form.Control  type="text" required placeholder="Product Name" id="product_Name" onChange={inp} value={productName}/>

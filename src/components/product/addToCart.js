@@ -46,12 +46,12 @@ function AddToCart()
     
     return(
         <div class="container">
-        <Breadcrumb>
+        <Breadcrumb className="mt-2">
                 <Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
                 <Breadcrumb.Item><Link to={`/Shopping?id=${id}`}>Add Products</Link></Breadcrumb.Item>
                 <Breadcrumb.Item><Link to="">AddToCart</Link></Breadcrumb.Item>
         </Breadcrumb>
-            <div class="row m-auto">
+            <div class="row m-auto add-to-cart">
                 <img src={fixedData.productImgSrc} alt="" className="col-12 col-sm-12 col-md-3 product-img" id="img"/>
                 <div className="col-12 col-sm-12 col-md-5 price-content-box" >
                   <div className="p-3 price-content-inner-box" style={{backgroundColor: "rgba(0, 128, 0, 0.445)"}}>
