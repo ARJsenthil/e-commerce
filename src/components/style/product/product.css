@@ -108,9 +108,31 @@
 
 
 @media screen and (max-width: 575px) {
-    
-    .product .product_name h6{
-            text-align: center !important;
-        }
-    
+        
+    .product .price-content-box {
+    text-align: center;
     }
+    .product .price-content-box p {
+    text-align: justify;
+    padding-inline: 5%;
+    }
+    .product h3.product_price_parent {
+    justify-content: center;
+    }
+    .product .price-content-inner-box {
+    padding: 10px !important;
+    }
+    .product .price-box h1{
+    text-align: center !important;
+    }
+    .product .price-box p.row span.col-7 {
+    padding-left: 30px !important;
+    }
+    .product .product_price_parent {
+    font-size: large !important;
+    }
+    .product .product_price_parent .product_price
+    {
+        font-size: x-large !important;
+    }
+}
