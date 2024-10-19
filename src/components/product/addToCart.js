@@ -45,13 +45,13 @@ function AddToCart()
     fixedData.quantity = localStorage.getItem('Quantity');
     
     return(
-        <div class="container">
+        <div class="container add-to-cart">
         <Breadcrumb className="mt-2">
                 <Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
                 <Breadcrumb.Item><Link to={`/Shopping?id=${id}`}>Add Products</Link></Breadcrumb.Item>
                 <Breadcrumb.Item><Link to="">AddToCart</Link></Breadcrumb.Item>
         </Breadcrumb>
-            <div class="row m-auto add-to-cart">
+            <div class="row m-auto">
                 <img src={fixedData.productImgSrc} alt="" className="col-12 col-sm-12 col-md-3 product-img" id="img"/>
                 <div className="col-12 col-sm-12 col-md-5 price-content-box" >
                   <div className="p-3 price-content-inner-box" style={{backgroundColor: "rgba(0, 128, 0, 0.445)"}}>

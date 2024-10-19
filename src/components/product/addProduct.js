@@ -216,7 +216,7 @@ const [data, setData] = useState();
     var productData = data ? JSON.parse(data): [];
   const temp_data = {
       id : productData.length,
-      productName: productName,
+      productName: productName.toUpperCase(),
       productDiscription: productDiscription,
       productQuantityLimit: productQuantityLimit,
       productFinalPrice: productFinalPrice,
