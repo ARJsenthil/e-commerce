@@ -1,6 +1,3 @@
-
-
-import '../style/product/product.css';
 import { useEffect, useState } from "react";
 import { Breadcrumb, Spinner, Table } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";

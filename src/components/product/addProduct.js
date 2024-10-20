@@ -161,8 +161,9 @@ const [data, setData] = useState();
     }
     else if(id == 'product_Orginal_Price')
     {
+      value = parseInt(value, 10)
         // if(numberRegex.test(value))
-        setProductOrginalPrice(parseInt(value));
+        setProductOrginalPrice(value.toString());
         productOrgPrice(value);
     }
     else if(id == 'product_Discount_Type')
@@ -180,7 +181,8 @@ const [data, setData] = useState();
       console.log('dis')
       if(numberRegex.test(value))
       {
-        setProductDiscount(value);
+        value = parseInt(value, 10)
+        setProductDiscount(value.toString());
         disPriceCount(value);
       }
     }
@@ -237,8 +239,12 @@ try {
 }
   
   return (
-    <div className="container">
-    <Form className="d-grid mt-2" onSubmit={addProduct} style={{gridTemplateColumns : 'auto auto'}} method="post">
+    <div className="container add-product">
+    <Breadcrumb className='mt-3'>
+            <Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
+            <Breadcrumb.Item><Link to="">Add Product</Link></Breadcrumb.Item>
+    </Breadcrumb>
+    <Form className="d-grid mt-5" onSubmit={addProduct} style={{gridTemplateColumns : 'auto auto'}} method="post">
       <Form.Group className="mb-3 px-1" controlId="">
         <Form.Label>Product Name <span className="text-danger">*</span></Form.Label>
         <Form.Control  type="text" required placeholder="Product Name" id="product_Name" onChange={inp} value={productName}/>
@@ -249,7 +255,7 @@ try {
       </Form.Group>
       <Form.Group className="mb-3 px-1" controlId="c2">
         <Form.Label>Product Orginal Price <span className="text-danger">*</span></Form.Label>
-        <Form.Control  type="number" required placeholder="Product Orginal Price" id="product_Orginal_Price" onChange={inp} value={productOrginalPrice}/>
+        <Form.Control  type="number" required placeholder="Product Orginal Price" id="product_Orginal_Price" min={1} onChange={inp} value={productOrginalPrice}/>
       </Form.Group>
       <Form.Group className="mb-3 px-1" controlId="c3">
         <Form.Label className="w-100">Product Discount Type <span className="text-danger">*</span></Form.Label>
@@ -261,7 +267,7 @@ try {
       </Form.Group>
       <Form.Group className="mb-3 px-1" controlId="c4">
         <Form.Label>Product Discount {productDiscountManditary?<span className="text-danger">*</span>:''}</Form.Label>
-        <Form.Control  type="number" required placeholder="Product Discount" id="product_Discount" onChange={inp} {...(productDiscountManditary?{}:{disabled:true})} value={productDiscount}/>
+        <Form.Control  type="number" required placeholder="Product Discount" id="product_Discount" onChange={inp} min={1} {...(productDiscountManditary?{}:{disabled:true})} value={productDiscount}/>
       </Form.Group>
       <Form.Group className="mb-3 px-1" controlId="c5">
         <Form.Label>Product Final Price <span className="text-danger">*</span></Form.Label>

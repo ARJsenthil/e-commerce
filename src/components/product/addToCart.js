@@ -1,5 +1,4 @@
 import { Breadcrumb } from 'react-bootstrap';
-import '../style/product/addToCart.css';
 import { useEffect } from "react";
 import { Link } from 'react-router-dom';
 
