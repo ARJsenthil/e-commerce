@@ -28,26 +28,22 @@ function Product()
   console.log(id)
   useEffect(() => {
     var productList = JSON.parse(localStorage.getItem('data'));
-    var data; 
-      productList.forEach(element => {
-      if(parseInt(element.id) === parseInt(id)) {
-        data = element;
-        console.log(element)
-      }
-      });
+    var data = productList.filter(item => item.id == id)[0];
+      // productList.forEach(element => {
+      // if(element.id == id) {
+      //   data = element;
+      //   console.log(element)
+      // }
+      // });
   fixedData.productOrginalPrice = data.productOrginalPrice;
   fixedData.productDiscount = data.productDiscount;
   fixedData.productFinalPrice = (data.productFinalPrice);
   }, [fixedData])
   useEffect(() => {
     var productList = JSON.parse(localStorage.getItem('data'));
-    var data; 
-      productList.forEach(element => {
-      if(parseInt(element.id) === parseInt(id)) {
-        data = element;
-        console.log(element)
-      }
-      });
+    var data = productList.filter(item => item.id == id)[0];
+    console.log(data)
+    console.log('data')
   setProductName(data.productName);
   setProductDiscription(data.productDiscription);
   setProductImgSrc(data.productImgSrc);

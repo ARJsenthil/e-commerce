@@ -31,9 +31,16 @@ const [data, setData] = useState();
     {
       if(productDiscountType == '%')
       {
-        setProductDiscountManditary(true)
+        if(productDiscount < 100){
+
+          setProductDiscountManditary(true)
               var d = (parseInt(data) * (parseInt(productDiscount)/100));
         setProductFinalPrice(Math.round(d))
+        } else {
+          setProductDiscount(99);
+          var d = (parseInt(data) * (99/100));
+        setProductFinalPrice(Math.round(d))
+      }
       }
       else if(productDiscountType == 'flat')
       {
@@ -52,10 +59,15 @@ const [data, setData] = useState();
     {
       if(data == '%')
       {
+        var value = productDiscount;
           setProductDiscountManditary(true)
+          if(productDiscount > 99) {
+            setProductDiscount(99)
+            value = 99;
+          }
           if(productDiscount)
           {
-              var d = parseInt(productOrginalPrice) - (parseInt(productOrginalPrice) * (parseInt(productDiscount)/100));
+              var d = parseInt(productOrginalPrice) - (parseInt(productOrginalPrice) * (parseInt(value)/100));
               console.log('%', d);
               setProductFinalPrice(Math.round(d));
           }
@@ -114,8 +126,8 @@ const [data, setData] = useState();
     const disPriceCount = (data) =>
     {
       // setProductFinalPrice('');  
-      if(data.length > 0)
-      {
+      // if(data.length > 0)
+      // {
         if(productDiscountType == '%')
         {
             var d = parseInt(productOrginalPrice) - (parseInt(productOrginalPrice) * (parseInt(data)/100));
@@ -125,7 +137,7 @@ const [data, setData] = useState();
             }
             else
             {
-              // setProductFinalPrice('');
+              setProductFinalPrice('');
             }
         }
         else if(productDiscountType == 'flat')
@@ -141,11 +153,15 @@ const [data, setData] = useState();
             }
         }
         
-      }
-      else
-      {
-        setProductFinalPrice(productOrginalPrice)
-      }
+      // }
+      // else
+      // {
+        // setProductFinalPrice(productOrginalPrice)
+      // }
+    }
+    const discountControl = (value) => {
+      setProductDiscount(value.toString());
+        disPriceCount(value);
     }
   const inp = (event) =>
   {
@@ -182,8 +198,16 @@ const [data, setData] = useState();
       if(numberRegex.test(value))
       {
         value = parseInt(value, 10)
-        setProductDiscount(value.toString());
-        disPriceCount(value);
+        if(productDiscountType == "%") {
+          if(parseInt(value) > 99) {
+            discountControl(99);
+          } else {
+            discountControl(value);
+          }
+        } 
+        else if(productDiscountType == "flat") {
+          discountControl(value);
+        }
       }
     }
     else if(id == 'product_Final_Price')
@@ -216,8 +240,10 @@ const [data, setData] = useState();
     event.preventDefault()
     var data = localStorage.getItem('data');
     var productData = data ? JSON.parse(data): [];
+    const { v4: uuidv4 } = require('uuid');
+    alert(uuidv4())
   const temp_data = {
-      id : productData.length,
+      id : uuidv4(),
       productName: productName.toUpperCase(),
       productDiscription: productDiscription,
       productQuantityLimit: productQuantityLimit,
@@ -267,7 +293,7 @@ try {
       </Form.Group>
       <Form.Group className="mb-3 px-1" controlId="c4">
         <Form.Label>Product Discount {productDiscountManditary?<span className="text-danger">*</span>:''}</Form.Label>
-        <Form.Control  type="number" required placeholder="Product Discount" id="product_Discount" onChange={inp} min={1} {...(productDiscountManditary?{}:{disabled:true})} value={productDiscount}/>
+        <Form.Control  type="number" required placeholder="Product Discount" id="product_Discount" onChange={inp} min={1} {...(productDiscountManditary?{}:{disabled:true})} {...(productDiscountType == "%" ? {max:99} : "")} value={productDiscount}/>
       </Form.Group>
       <Form.Group className="mb-3 px-1" controlId="c5">
         <Form.Label>Product Final Price <span className="text-danger">*</span></Form.Label>

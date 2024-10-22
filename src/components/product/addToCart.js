@@ -24,13 +24,7 @@ function AddToCart()
 
   // useEffect(() => {
     var productList = JSON.parse(localStorage.getItem('data'));
-    var data = {};
-    productList.forEach(element => {
-      if(parseInt(element.id) === parseInt(id)) {
-        data = element;
-      }
-      });
-    console.log(data);
+    var data = productList.filter(item => item.id == id)[0];
     fixedData.productName = data.productName;
     fixedData.productDiscription = data.productDiscription;
     fixedData.productImgSrc = data.productImgSrc;
