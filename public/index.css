@@ -24,6 +24,14 @@
 .trending-box-inner-container {
     height: 450px;
 }
+.trending-box .action {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+.trending-box .action .btn {
+}
 .add-product-link {
     width: 100%;
     display: grid;

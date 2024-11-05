@@ -5,6 +5,7 @@ function MenuBar()
 {
   
     return(
+      <div className="container">
 <nav class="navbar navbar-expand-lg navbar-dark bg-info">
         <Link class="navbar-brand" to={"/"}>Shopping</Link>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,6 +17,7 @@ function MenuBar()
             </span>
         </div>
       </nav>
+      </div>
     );
 }
 

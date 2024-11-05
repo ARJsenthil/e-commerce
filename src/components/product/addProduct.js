@@ -241,7 +241,6 @@ const [data, setData] = useState();
     var data = localStorage.getItem('data');
     var productData = data ? JSON.parse(data): [];
     const { v4: uuidv4 } = require('uuid');
-    alert(uuidv4())
   const temp_data = {
       id : uuidv4(),
       productName: productName.toUpperCase(),
@@ -308,8 +307,8 @@ try {
         <Form.Control  type="text" required placeholder="What Type of Product" id="product_Type" onChange={inp} value={productType}/>
       </Form.Group>
       <Form.Group className="mb-3 px-1" controlId="c8">
-        <Form.Label for="file">Product Image <span className="text-danger">*</span></Form.Label>
-        <Form.Control  name="file" required type="file" placeholder="product Image" id="product_Img" onChange={inp} />
+        <Form.Label for="file">Product Image ( res : 300 * 300)<span className="text-danger">*</span></Form.Label>
+        <Form.Control  name="file" required type="file" accept="image/*" placeholder="product Image" id="product_Img" onChange={inp} />
       </Form.Group>
       
       <div className="d-inline-block px-1 m-auto pb-2a">
