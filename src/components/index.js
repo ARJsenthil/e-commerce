@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
-import swal from "sweetalert";
+import d from "sweetalert2";
+import d from "sweetalert";
 
 export default function Home () {
     const [data, setData] = useState([]);
@@ -18,7 +18,7 @@ export default function Home () {
     }
     const deleteProductData = () => {
         if(data.length > 0) {
-            Swal.fire({
+            d.fire({
                 title: "Are you sure?",
                 text: "You won't be able to revert this!",
                 icon: "warning",
@@ -30,7 +30,7 @@ export default function Home () {
                 if (result.isConfirmed) {
                     try {
                         localStorage.setItem('data', '[]')
-                        Swal.fire({
+                        d.fire({
                             title: "Deleted!",
                             text: "Your file has been deleted.",
                             icon: "success"
@@ -38,7 +38,7 @@ export default function Home () {
                           dataRetrive();
                     }
                     catch(e) {
-                        Swal.fire({
+                        d.fire({
                             title: "Sorry!",
                             text: "try again later.",
                             icon: "swarningccess"
@@ -48,7 +48,7 @@ export default function Home () {
               });
         }
         else {
-            swal('Sorry !', 'Nothing To Delete', 'warning');
+            d('Sorry !', 'Nothing To Delete', 'warning');
         }
     }
 
